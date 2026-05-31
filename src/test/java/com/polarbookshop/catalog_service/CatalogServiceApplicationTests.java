@@ -3,17 +3,17 @@ package com.polarbookshop.catalog_service;
 import com.polarbookshop.catalog_service.domain.Book;
 import com.polarbookshop.catalog_service.domain.BookRepository;
 import com.polarbookshop.catalog_service.domain.BookService;
+import com.polarbookshop.catalog_service.web.BookController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@SpringBootTest(
-		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
-)
+@WebMvcTest(BookController.class)
 class CatalogServiceApplicationTests {
 
 	@Autowired
