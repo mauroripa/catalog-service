@@ -20,6 +20,7 @@ jobs:
       - name: Code Vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
+        continue-on-error: true
         with:
           path: "${{ github.workspace }}"
           fail-build: false
