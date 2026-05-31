@@ -1,7 +1,7 @@
 package com.polarbookshop.catalog_service;
 
 import com.polarbookshop.catalog_service.domain.Book;
-import com.polarbookshop.catalog_service.domain.BookRepository;
+import com.polarbookshop.catalog_service.domain.BookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +19,7 @@ class CatalogServiceApplicationTests {
 	private WebTestClient webTestClient;
 
 	@MockitoBean
-	private BookRepository bookRepository;
+	private BookService bookService;
 
 	@Test
 	void whenPostRequestThenBookCreated() {
