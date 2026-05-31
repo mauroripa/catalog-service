@@ -1,9 +1,11 @@
 package com.polarbookshop.catalog_service;
 
 import com.polarbookshop.catalog_service.domain.Book;
+import com.polarbookshop.catalog_service.domain.BookRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -15,6 +17,9 @@ class CatalogServiceApplicationTests {
 
 	@Autowired
 	private WebTestClient webTestClient;
+
+	@MockitoBean
+	private BookRepository bookRepository;
 
 	@Test
 	void whenPostRequestThenBookCreated() {
