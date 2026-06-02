@@ -8,16 +8,25 @@ import org.springframework.boot.test.json.JacksonTester;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Test unitari per la serializzazione e deserializzazione JSON del record {@link Book}.
+ * <p>Utilizza {@link JacksonTester} per verificare che il mapping tra il formato
+ * JSON e l'oggetto Java avvenga correttamente, rispettando le aspettative dell'API.</p>
+ */
 @JsonTest
 public class BookJsonTests {
 
     @Autowired
     private JacksonTester<Book> json;
 
+    /**
+     * Verifica che un oggetto {@link Book} venga convertito correttamente in una stringa JSON.
+     */
     @Test
-    void testSerialize() throws Exception{
+    void testSerialize() throws Exception {
         var book = new Book("1234567890", "Title", "Author", 9.90);
         var jsonContent = json.write(book);
+
         assertThat(jsonContent).extractingJsonPathStringValue("@.isbn")
                 .isEqualTo(book.isbn());
         assertThat(jsonContent).extractingJsonPathStringValue("@.title")
@@ -28,6 +37,9 @@ public class BookJsonTests {
                 .isEqualTo(book.price());
     }
 
+    /**
+     * Verifica che una stringa JSON venga convertita correttamente in un oggetto {@link Book}.
+     */
     @Test
     void testDeserialize() throws Exception {
         var content = """
@@ -38,6 +50,7 @@ public class BookJsonTests {
             "price": 9.90
         }
         """;
+
         assertThat(json.parse(content))
                 .usingRecursiveComparison()
                 .isEqualTo(new Book("1234567890", "Title", "Author", 9.90));
