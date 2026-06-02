@@ -7,4 +7,4 @@ server:
       max: 50
       min-spare: 5
 polar:
-  greeting: "Hello"
+  greeting: "Welcome to the local book catalog!"

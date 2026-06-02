@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
-@ConfigurationPropertiesScan
+@ConfigurationPropertiesScan // Carica i data beans di configurazione nel context di Spring(ConfigurationProperties)
 public class CatalogServiceApplication {
 
 	public static void main(String[] args) {
