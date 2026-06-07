@@ -8,3 +8,36 @@ server:
       min-spare: 5
 polar:
   greeting: "Welcome to the local book catalog!"
+spring:
+  application:
+    name: catalog-service   #Il nome dell'applicazione usato dal config server per filtrare la configurazione
+  config:
+    import: "optional:configserver:" #importa i dati di configurazione da config server quando disponibile
+  cloud:
+    config:
+      uri: http://localhost:8888 # l'URL del server di configurazione
+      request-connect-timeout: 5000 #timeout per rendere resiliente la lettura da config server
+     # 5 sec max per connettersi e 5 sec massimi per leggere le configurazioni
+      request-read-timeout: 5000
+      fail-fast: true #rende un fallimento di connessione al config server fatale
+      retry:
+        max-attempts: 6 #massimo numero di tentativi
+        initial-interval: 1000 #intervallo iniziale di backOff in ms
+        max-interval: 2000 #massimo intervallo di backoff per il retry in ms
+        multiplier: 1.1 #multiplier per computare il prossimo intervallo
+  datasource:
+    username: user
+    password: password
+    url: jbdc:postgresql://localhost:5432/polardb_catalog
+    hikari:
+      connection-timeout: 2000 #il tempo massimo di attesa per prendere una connessione dalla pool
+      maximum-pool-size: 5 #il numero massimo di connessioni HikariCP da lasciare nella pool
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh #espone l'actuator/refresh endpoint per richieste HTTP
+        #questo endpoint refresha le configurazioni che vengono pushate nei vari file
+        # fa parte dei "Processi Amministrativi" uno dei 15 fattori per la metodologia CLOUD
+        # genera un RefreshScopeRefreshedEvent
+
