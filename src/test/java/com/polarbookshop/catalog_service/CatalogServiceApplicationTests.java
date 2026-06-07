@@ -32,7 +32,7 @@ class CatalogServiceApplicationTests {
 
 	@Test
 	void whenPostRequestThenBookCreated() {
-		var expectedBook = new Book("1234567890123", "Title", "Author", 9.90);
+		var expectedBook = Book.of("1234567890123", "Title", "Author", 9.90);
 
 		// Configuriamo il mock per restituire il libro quando chiamato
 		given(bookService.addBookToCatalog(expectedBook)).willReturn(expectedBook);
