@@ -16,16 +16,16 @@ spring:
   cloud:
     config:
       enabled: false,
-      uri: http://localhost:8888 # l'URL del server di configurazione
-      request-connect-timeout: 5000 #timeout per rendere resiliente la lettura da config server
+     # uri: http://localhost:8888 # l'URL del server di configurazione
+   #   request-connect-timeout: 5000 #timeout per rendere resiliente la lettura da config server
      # 5 sec max per connettersi e 5 sec massimi per leggere le configurazioni
-      request-read-timeout: 5000
-      fail-fast: true #rende un fallimento di connessione al config server fatale
-      retry:
-        max-attempts: 6 #massimo numero di tentativi
-        initial-interval: 1000 #intervallo iniziale di backOff in ms
-        max-interval: 2000 #massimo intervallo di backoff per il retry in ms
-        multiplier: 1.1 #multiplier per computare il prossimo intervallo
+   #   request-read-timeout: 5000
+   #   fail-fast: true #rende un fallimento di connessione al config server fatale
+    #  retry:
+    #    max-attempts: 6 #massimo numero di tentativi
+    #    initial-interval: 1000 #intervallo iniziale di backOff in ms
+    #    max-interval: 2000 #massimo intervallo di backoff per il retry in ms
+   #     multiplier: 1.1 #multiplier per computare il prossimo intervallo
   datasource:
     username: user
     password: password
