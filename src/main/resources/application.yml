@@ -15,6 +15,7 @@ spring:
     import: "optional:configserver:" #importa i dati di configurazione da config server quando disponibile
   cloud:
     config:
+      enabled: false,
       uri: http://localhost:8888 # l'URL del server di configurazione
       request-connect-timeout: 5000 #timeout per rendere resiliente la lettura da config server
      # 5 sec max per connettersi e 5 sec massimi per leggere le configurazioni
