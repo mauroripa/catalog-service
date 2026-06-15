@@ -22,6 +22,7 @@ How to start project:
 - delete the deployment: kubectl delete deployment catalog-service
 - stop k8s with minikube stop
 
+helllo
 
 To just test it out:
 - ./gradlew test
