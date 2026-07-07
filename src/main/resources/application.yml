@@ -29,7 +29,7 @@ spring:
   datasource:
     username: user
     password: password
-    url: jbdc:postgresql://localhost:5432/polardb_catalog
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
     hikari:
       connection-timeout: 2000 #il tempo massimo di attesa per prendere una connessione dalla pool
       maximum-pool-size: 5 #il numero massimo di connessioni HikariCP da lasciare nella pool
