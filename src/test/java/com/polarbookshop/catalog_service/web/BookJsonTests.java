@@ -47,12 +47,11 @@ public class BookJsonTests {
     void testDeserialize() throws Exception {
         var content = """
         {
-            "id": 1,
+            "id": null,
             "isbn": "1234567890",
             "title": "Title",
             "author": "Author",
-            "price": 9.90,
-            "version": 1
+            "price": 9.90
         }
         """;
 
